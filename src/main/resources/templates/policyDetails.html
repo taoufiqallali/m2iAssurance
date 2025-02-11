@@ -111,14 +111,19 @@
                         </div>
 
                         <div>
-                            <label class="block text-sm font-medium text-gray-700">Start Date <span th:text="${policy.startDate}"></span></label>
-                            <input type="date" th:field="*{startDate}" required
+                            <label class="block text-sm font-medium text-gray-700">Start Date</label>
+                            <input type="date"
+                                   th:attr="value=${#temporals.format(policy.startDate, 'yyyy-MM-dd')}"
+                                   name="startDate"
+                                   id="startDate"
                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" />
                         </div>
 
                         <div>
-                            <label class="block text-sm font-medium text-gray-700">End Date <span th:text="${policy.endDate}"></span></label>
-                            <input type="date" th:field="*{endDate}" required
+                            <label class="block text-sm font-medium text-gray-700">End Date</label>
+                            <input type="date" th:attr="value=${#temporals.format(policy.endDate, 'yyyy-MM-dd')}"
+                                   name="endDate"
+                                   id="endDate"
                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" />
                         </div>
 
@@ -160,8 +165,12 @@
                                 </div>
 
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700">First registration <span th:text="${policy.vehicleYear}"></span></label>
-                                    <input type="date" th:field="*{vehicleDetails.vehicleYear}" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                    <label class="block text-sm font-medium text-gray-700">First registration</label>
+                                    <input type="date"
+                                           th:attr="value=${#temporals.format(policy.vehicleDetails.vehicleYear, 'yyyy-MM-dd')}"
+                                           name="vehicleDetails.vehicleYear"
+                                           id="vehicleYear"
+                                           class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" />
                                 </div>
 
 
