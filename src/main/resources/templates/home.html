@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>M2I Assurance - Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="flex flex-col min-h-screen bg-gray-50">
+<!-- Navigation -->
+<nav class="bg-white shadow-md">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex justify-between h-16 items-center">
+      <!-- Logo -->
+      <div class="flex items-center">
+        <a href="/" class="text-2xl font-bold text-blue-600">
+          M2I ASSURANCE
+        </a>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="flex items-center space-x-4">
+        <a href="/login" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">
+          Login
+        </a>
+        <a href="/users/register" class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition-colors">
+          Register
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<main class="flex-grow">
+  <div class="max-w-7xl mx-auto px-4 py-16">
+    <div class="text-center">
+      <h1 class="text-5xl font-bold text-gray-900 mb-6">
+        Protecting What Matters Most
+      </h1>
+      <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+        Your trusted partner in securing your future. We provide comprehensive insurance solutions tailored to your needs.
+      </p>
+      <div class="space-x-4">
+        <a href="/users/register" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg text-lg font-medium hover:bg-blue-700 transition-colors">
+          Get Started
+        </a>
+        <a href="/about" class="inline-block bg-white text-blue-600 px-8 py-3 rounded-lg text-lg font-medium border-2 border-blue-600 hover:bg-blue-50 transition-colors">
+          Learn More
+        </a>
+      </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="text-center p-6">
+        <div class="text-blue-600 text-4xl mb-4">🛡️</div>
+        <h3 class="text-xl font-semibold mb-2">Complete Protection</h3>
+        <p class="text-gray-600">Comprehensive coverage for all your insurance needs</p>
+      </div>
+      <div class="text-center p-6">
+        <div class="text-blue-600 text-4xl mb-4">⚡</div>
+        <h3 class="text-xl font-semibold mb-2">Fast Claims</h3>
+        <p class="text-gray-600">Quick and hassle-free claims processing</p>
+      </div>
+      <div class="text-center p-6">
+        <div class="text-blue-600 text-4xl mb-4">💪</div>
+        <h3 class="text-xl font-semibold mb-2">Reliable Support</h3>
+        <p class="text-gray-600">24/7 customer support at your service</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-gray-800 text-gray-300">
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <!-- Company Info -->
+      <div class="col-span-1 md:col-span-2">
+        <h3 class="text-xl font-bold text-white mb-4">M2I ASSURANCE</h3>
+        <p class="text-sm">
+          Your trusted insurance partner since 2024. We are committed to providing the best insurance solutions for our clients.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+        <ul class="space-y-2">
+          <li><a href="/about" class="hover:text-white">About Us</a></li>
+          <li><a href="/services" class="hover:text-white">Services</a></li>
+          <li><a href="/contact" class="hover:text-white">Contact</a></li>
+          <li><a href="/privacy" class="hover:text-white">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div>
+        <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+        <ul class="space-y-2">
+          <li>📱 +1 234 567 890</li>
+          <li>✉️ contact@m2iassurance.com</li>
+          <li>📍 123 Insurance Street</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom Footer -->
+    <div class="border-t border-gray-700 mt-8 pt-8 text-sm text-center">
+      <p>&copy; 2024 M2I Assurance. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
