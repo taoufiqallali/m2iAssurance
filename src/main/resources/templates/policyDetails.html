@@ -6,12 +6,19 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-50">
+
+<!-- Top Navigation -->
 <nav class="bg-white shadow-md fixed w-full z-10">
     <div class="max-w-7xl mx-auto px-4">
         <div class="flex justify-between h-16 items-center">
+            <!-- Logo -->
             <div class="flex items-center">
-                <a href="/" class="text-2xl font-bold text-blue-600">M2I ASSURANCE</a>
+                <a href="/" class="text-2xl font-bold text-blue-600">
+                    M2I ASSURANCE
+                </a>
             </div>
+
+            <!-- User Menu -->
             <div class="flex items-center space-x-4">
                 <span class="text-gray-600">Welcome, <span th:text="${#authentication.name}"></span></span>
                 <form th:action="@{/logout}" method="post">
@@ -26,18 +33,49 @@
     </div>
 </nav>
 
+<!-- Sidebar and Main Content Container -->
 <div class="flex pt-16 min-h-screen">
+    <!-- Sidebar -->
     <aside class="w-64 bg-white shadow-md fixed h-full">
         <nav class="mt-8">
             <div class="px-4 space-y-2">
-                <!-- Same sidebar content as main page -->
+                <a href="/dashboard" class="flex items-center space-x-2 py-2.5 px-4 rounded transition duration-200 text-gray-600 hover:bg-gray-100">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                    </svg>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="/policies/categories" class="flex items-center space-x-2 py-2.5 px-4 rounded transition duration-200 text-gray-600 hover:bg-gray-100">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                    </svg>
+                    <span>Categories</span>
+                </a>
+
+                <a href="/policies/myPolicies" class="flex items-center space-x-2 py-2.5 px-4 rounded transition duration-200 bg-blue-50 text-blue-600 hover:bg-blue-100">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    <span>My Policies</span>
+                </a>
+
+                <a href="/users/personalInfo" class="flex items-center space-x-2 py-2.5 px-4 rounded transition duration-200 text-gray-600 hover:bg-gray-100">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                    </svg>
+                    <span>Personal Info</span>
+                </a>
             </div>
         </nav>
     </aside>
 
+    <!-- Main Content -->
     <main class="ml-64 flex-1 p-8">
-        <div class="max-w-4xl mx-auto">
-            <div class="bg-white rounded-lg shadow-lg p-6">
+        <!-- Policy Details -->
+        <div class="bg-white rounded-lg shadow mb-8">
+
+            <div class="p-6">
                 <form th:action="@{/policies/update}" method="post" th:object="${policy}" class="space-y-6">
                     <input type="hidden" th:field="*{policyNumber}" />
 
@@ -46,7 +84,7 @@
                         <span class="px-3 py-1 text-sm font-medium rounded-full"
                               th:classappend="${policy.status == 'ACTIVE' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}"
                               th:text="${policy.status}">
-                            </span>
+                        </span>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -73,29 +111,185 @@
                         </div>
 
                         <div>
-                            <label class="block text-sm font-medium text-gray-700">Start Date</label>
-                            <input type="date" th:field="*{startDate}"
+                            <label class="block text-sm font-medium text-gray-700">Start Date <span th:text="${policy.startDate}"></span></label>
+                            <input type="date" th:field="*{startDate}" required
                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" />
                         </div>
 
                         <div>
-                            <label class="block text-sm font-medium text-gray-700">End Date</label>
-                            <input type="date" th:field="*{endDate}"
+                            <label class="block text-sm font-medium text-gray-700">End Date <span th:text="${policy.endDate}"></span></label>
+                            <input type="date" th:field="*{endDate}" required
                                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" />
                         </div>
 
                         <!-- Category Specific Details -->
-                        <div th:if="${policy.category == 'LIFE'}" class="col-span-2">
-                            <h3 class="text-lg font-medium text-gray-900 mb-4">Life Insurance Details</h3>
+                        <div th:if="${policy.category.name() eq 'Life' }" class="col-span-2">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <!-- Add life insurance specific fields -->
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Beneficiary Name</label>
+                                    <input type="text" th:field="*{lifeDetails.beneficiaryName}" name="beneficiaryName" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Beneficiary Relationship</label>
+                                    <input type="text" th:field="*{lifeDetails.beneficiaryRelationship}" name="beneficiaryRelationship" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                </div>
+
+
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Occupation</label>
+                                    <input type="text" th:field="*{lifeDetails.occupation}" name="occupation" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Annual Income</label>
+                                    <input type="number" th:field="*{lifeDetails.annualIncome}" name="annualIncome" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                </div>
                             </div>
                         </div>
 
-                        <div th:if="${policy.category == 'VEHICLE'}" class="col-span-2">
-                            <h3 class="text-lg font-medium text-gray-900 mb-4">Vehicle Insurance Details</h3>
+                        <div th:if="${policy.category.name() == 'Vehicle'}" class="col-span-2">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <!-- Add vehicle insurance specific fields -->
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Make</label>
+                                    <input type="text" th:field="*{vehicleDetails.vehicleMake}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Model</label>
+                                    <input type="text" th:field="*{vehicleDetails.vehicleModel}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">First registration <span th:text="${policy.vehicleYear}"></span></label>
+                                    <input type="date" th:field="*{vehicleDetails.vehicleYear}" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                </div>
+
+
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Immatriculation</label>
+                                    <input type="text" th:field="*{vehicleDetails.vehicleVin}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Driver's licence number</label>
+                                    <input type="text" th:field="*{vehicleDetails.driverLicense}"  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Annual mileage</label>
+                                    <input type="number" th:field="*{vehicleDetails.annualMileage}"  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                </div>
+
+                                <div>
+                                    <label class="inline-flex items-center">
+                                        <input type="checkbox" th:field="*{vehicleDetails.isCommercialUse}" class="mt-1 h-5 w-5 rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                        <span class="ml-2 text-sm font-medium text-gray-700">Is the vehicle commercial?</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div th:if="${policy.category.name() == 'Property'}" class="col-span-2">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Property address</label>
+                                    <input type="text" th:field="*{propertyDetails.propertyAddress}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Size (in m²)</label>
+                                    <input type="number" th:field="*{propertyDetails.propertySize}"  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Age</label>
+                                    <input type="number" th:field="*{propertyDetails.propertyAge}"  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                </div>
+
+                                <div>
+                                    <label class="inline-flex items-center">
+                                        <input type="checkbox" th:field="*{propertyDetails.hasSecuritySystem}" class="mt-1 h-5 w-5 rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                        <span class="ml-2 text-sm font-medium text-gray-700">Has security system?</span>
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Property Type</label>
+                                    <select th:field="*{propertyDetails.propertyType}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm font-medium text-gray-700">
+                                        <option value="RESIDENTIAL">Residential</option>
+                                        <option value="COMMERCIAL">Commercial</option>
+                                        <option value="RENTAL">Rental</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div th:if="${policy.category.name() == 'Health'}" class="col-span-2">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Coverage level</label>
+                                    <select th:field="*{healthDetails.desiredCoverage}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm font-medium text-gray-700">
+                                        <option value="BASIC">Basic</option>
+                                        <option value="PREMIUM">Premium</option>
+                                        <option value="STANDARD">Standard</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="inline-flex items-center">
+                                        <input type="checkbox" th:field="*{healthDetails.hasPreviousConditions}" class="mt-1 h-5 w-5 rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                        <span class="ml-2 text-sm font-medium text-gray-700">Has previous conditions?</span>
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <label class="inline-flex items-center">
+                                        <input type="checkbox" th:field="*{healthDetails.includesDental}" class="mt-1 h-5 w-5 rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                        <span class="ml-2 text-sm font-medium text-gray-700">Includes dental?</span>
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <label class="inline-flex items-center">
+                                        <input type="checkbox" th:field="*{healthDetails.includesVision}" class="mt-1 h-5 w-5 rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                        <span class="ml-2 text-sm font-medium text-gray-700">Includes vision?</span>
+                                    </label>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div th:if="${policy.category.name() == 'Business'}" class="col-span-2">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Buisness name</label>
+                                    <input type="text" th:field="*{businessDetails.businessName}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Number of employees</label>
+                                    <input type="number" th:field="*{businessDetails.numberOfEmployees}"  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Annual revenue</label>
+                                    <input type="number" th:field="*{businessDetails.annualRevenue}"  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Industry type</label>
+                                    <select th:field="*{businessDetails.industryType}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm font-medium text-gray-700">
+                                        <option value="CONSTRUCTION">Construction</option>
+                                        <option value="TECHNOLOGY">Technology</option>
+                                        <option value="RETAIL">Retail</option>
+                                        <option value="HEALTHCARE">Healthcare</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700">Years in business</label>
+                                    <input type="number" th:field="*{businessDetails.yearsInBusiness}"  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                </div>
+
                             </div>
                         </div>
 
@@ -103,12 +297,12 @@
                     </div>
 
                     <div class="flex justify-end space-x-4 mt-8">
-                        <a href="/dashboard/myPolicies"
+                        <a href="/policies/myPolicies"
                            class="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
                             Cancel
                         </a>
                         <button type="submit"
-                                class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700">
+                                class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
                             Update Policy
                         </button>
                     </div>

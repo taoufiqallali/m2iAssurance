@@ -277,4 +277,21 @@ public class PolicyService {
     public Policy getPolicyByNumber(String policyNumber){
         return policyRepository.findByPolicyNumber(policyNumber).orElse(null);
     }
+
+    public Policy updatePolicy(Policy updatedPolicy) {
+        return policyRepository.findByPolicyNumber(updatedPolicy.getPolicyNumber())
+                .map(existingPolicy -> {
+                    existingPolicy.setCoverageAmount(updatedPolicy.getCoverageAmount());
+                    existingPolicy.setMonthlyPremium(updatedPolicy.getMonthlyPremium());
+                    existingPolicy.setStartDate(updatedPolicy.getStartDate());
+                    existingPolicy.setEndDate(updatedPolicy.getEndDate());
+                    existingPolicy.setLifeDetails(updatedPolicy.getLifeDetails());
+                    existingPolicy.setVehicleDetails(updatedPolicy.getVehicleDetails());
+                    existingPolicy.setPropertyDetails(updatedPolicy.getPropertyDetails());
+                    existingPolicy.setHealthDetails(updatedPolicy.getHealthDetails());
+                    existingPolicy.setBusinessDetails(updatedPolicy.getBusinessDetails());
+                    return policyRepository.save(existingPolicy);
+                })
+                .orElseThrow(() -> new RuntimeException("Policy not found with id: " + updatedPolicy.getId()));
+    }
 }

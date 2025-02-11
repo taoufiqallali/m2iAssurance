@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -49,7 +50,15 @@ public class PoliciesController {
     public String policyDetails(@RequestParam String policyNumber, Model model) {
         Policy policy = policyService.getPolicyByNumber(policyNumber);
         model.addAttribute("policy", policy);
+        System.out.println(policy.getCategory());
         return "policyDetails";
+    }
+
+    @PostMapping("/update")
+    public String update(Policy policy){
+        Policy old = policyService.getPolicyByNumber(policy.getPolicyNumber());
+        policyService.updatePolicy(policy);
+        return "redirect:/policies/myPolicies";
     }
 
 
