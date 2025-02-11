@@ -21,7 +21,7 @@ public interface PolicyRepository extends MongoRepository<Policy, String> {
     Long countByPolicyholderAndStatus(User user, String status);
     List<Policy> findByPolicyholder(User policyholder, Pageable pageable);
     Long countByPolicyholder(User user);
-
+    void deleteByPolicyNumber(String policyNumber);
 
 }
 

@@ -50,7 +50,6 @@ public class PoliciesController {
     public String policyDetails(@RequestParam String policyNumber, Model model) {
         Policy policy = policyService.getPolicyByNumber(policyNumber);
         model.addAttribute("policy", policy);
-        System.out.println(policy.getCategory());
         return "policyDetails";
     }
 
@@ -58,6 +57,12 @@ public class PoliciesController {
     public String update(Policy policy){
         Policy old = policyService.getPolicyByNumber(policy.getPolicyNumber());
         policyService.updatePolicy(policy);
+        return "redirect:/policies/myPolicies";
+    }
+
+    @GetMapping("/delete")
+    public String delete(@RequestParam String policyNumber) {
+        policyService.deletePolicy(policyNumber);
         return "redirect:/policies/myPolicies";
     }
 

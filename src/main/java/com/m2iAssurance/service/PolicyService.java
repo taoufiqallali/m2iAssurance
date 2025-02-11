@@ -294,4 +294,10 @@ public class PolicyService {
                 })
                 .orElseThrow(() -> new RuntimeException("Policy not found with id: " + updatedPolicy.getId()));
     }
+
+    public void deletePolicy(String policyNumber){
+
+        policyRepository.deleteByPolicyNumber(policyNumber);
+
+    }
 }
