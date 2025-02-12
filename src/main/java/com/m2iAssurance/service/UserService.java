@@ -2,9 +2,12 @@ package com.m2iAssurance.service;
 
 
 import com.m2iAssurance.enums.Role;
+import com.m2iAssurance.model.Policy;
 import com.m2iAssurance.model.User;
 import com.m2iAssurance.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -62,5 +65,9 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
+
+    public Page<User> getRecentUsers(){
+        return userRepository.findAll(PageRequest.of(0, 4));
+    }
 
 }

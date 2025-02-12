@@ -231,9 +231,7 @@ public class PolicyService {
         return basePremium.max(BigDecimal.valueOf(1200));
     }
 
-    public List<Policy> getPoliciesByPolicyHolderId(String id){
-        return policyRepository.findByPolicyholder_Id(id);
-    }
+
 
     public List<Policy> getPoliciesByPolicyHolderUsername(String username){
         return policyRepository.findByPolicyholder_Username(username);
@@ -270,9 +268,9 @@ public class PolicyService {
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
-    public List<Policy> getLastPolicies(User user){
-        return policyRepository.findByPolicyholder(user, PageRequest.of(0, 4, Sort.by(Sort.Direction.DESC, "endDate")));
-    }
+        public List<Policy> getLastPolicies(User user){
+            return policyRepository.findByPolicyholder(user, PageRequest.of(0, 4, Sort.by(Sort.Direction.DESC, "endDate")));
+        }
 
     public Policy getPolicyByNumber(String policyNumber){
         return policyRepository.findByPolicyNumber(policyNumber).orElse(null);
@@ -300,4 +298,22 @@ public class PolicyService {
         policyRepository.deleteByPolicyNumber(policyNumber);
 
     }
+
+    public  Long policyCount(String status){
+        return policyRepository.countByStatus(status);
+    }
+
+    public BigDecimal getAllTotalPremium(){
+
+        List<Policy> policies = policyRepository.findByStatus(PolicyStatus.ACTIVE);
+        return policies.stream()
+                .map(Policy::getMonthlyPremium)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
+    public List<Policy> getRecentPoliciesByStatus(String status){
+        return policyRepository.findByStatus(status, PageRequest.of(0, 4));
+    }
+
+
 }
