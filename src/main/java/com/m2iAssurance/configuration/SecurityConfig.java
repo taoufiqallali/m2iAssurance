@@ -27,14 +27,15 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((requests) -> requests
-                        //.requestMatchers("/", "/css/**", "/js/**", "/images/**", "/register/**").permitAll()
-                        .anyRequest().permitAll()
+                        .requestMatchers("/", "/register/**", "/login/**").permitAll()
+                        .requestMatchers("/adminDashboard/**").hasRole("ADMIN")
+                        .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
                         .loginPage("/login")
-                        .permitAll()
-                        .defaultSuccessUrl("/dashboard", true)
+                        .defaultSuccessUrl("/redirect", true)
                         .failureUrl("/login?error=true")
+                        .permitAll()
                 )
                 .logout(logout -> logout
                         .logoutUrl("/logout")
