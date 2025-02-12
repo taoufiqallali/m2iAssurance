@@ -315,5 +315,13 @@ public class PolicyService {
         return policyRepository.findByStatus(status, PageRequest.of(0, 4));
     }
 
+    public List<Policy> getPoliciesByStatus(String status){
+        return policyRepository.findByStatus(status);
+    }
+
+
+    public Policy save(Policy policy) {
+        return policyRepository.save(policy);
+    }
 
 }
