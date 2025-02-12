@@ -70,4 +70,8 @@ public class UserService {
         return userRepository.findAll(PageRequest.of(0, 4));
     }
 
+    public void deleteById(String id){
+        userRepository.deleteById(id);
+    }
+
 }
