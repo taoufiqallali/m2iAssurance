@@ -83,29 +83,29 @@
 
                         <div>
                             <label class="block text-sm font-medium text-gray-700">Property address</label>
-                            <input type="text" th:field="*{propertyDetails.propertyAddress}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                            <input type="text" th:field="*{propertyDetails.propertyAddress}" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
                         </div>
 
                         <div>
                             <label class="block text-sm font-medium text-gray-700">Size (in m²)</label>
-                            <input type="number" th:field="*{propertyDetails.propertySize}"  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                            <input type="number" th:field="*{propertyDetails.propertySize}" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
                         </div>
 
                         <div>
                             <label class="block text-sm font-medium text-gray-700">Age</label>
-                            <input type="number" th:field="*{propertyDetails.propertyAge}"  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                            <input type="number" th:field="*{propertyDetails.propertyAge}" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
                         </div>
 
                         <div>
                             <label class="inline-flex items-center">
-                                <input type="checkbox" th:field="*{propertyDetails.hasSecuritySystem}" class="mt-1 h-5 w-5 rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                <input type="checkbox" th:field="*{propertyDetails.hasSecuritySystem}"  class="mt-1 h-5 w-5 rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-500 focus:ring-blue-500">
                                 <span class="ml-2 text-sm font-medium text-gray-700">Has security system?</span>
                             </label>
                         </div>
 
                         <div>
                             <label class="block text-sm font-medium text-gray-700">Property Type</label>
-                            <select th:field="*{propertyDetails.propertyType}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm font-medium text-gray-700">
+                            <select th:field="*{propertyDetails.propertyType}" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm font-medium text-gray-700">
                                 <option value="RESIDENTIAL">Residential</option>
                                 <option value="COMMERCIAL">Commercial</option>
                                 <option value="RENTAL">Rental</option>
@@ -114,16 +114,16 @@
 
                         <div>
                             <label class="block text-sm font-medium text-gray-700">Coverage amount</label>
-                            <input type="number" th:field="*{coverageAmount}" name="coverageAmount" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                            <input type="number" th:field="*{coverageAmount}" name="coverageAmount" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
                         </div>
 
                         <div>
                             <label class="block text-sm font-medium text-gray-700">Start Date</label>
-                            <input type="date" th:field="*{startDate}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                            <input type="date" th:field="*{startDate}" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700">End Date</label>
-                            <input type="date" th:field="*{endDate}"  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                            <input type="date" th:field="*{endDate}" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
                         </div>
                     </div>
 

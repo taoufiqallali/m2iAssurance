@@ -83,22 +83,22 @@
 
                         <div>
                             <label class="block text-sm font-medium text-gray-700">Buisness name</label>
-                            <input type="text" th:field="*{businessDetails.businessName}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                            <input type="text" th:field="*{businessDetails.businessName}" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
                         </div>
 
                         <div>
                             <label class="block text-sm font-medium text-gray-700">Number of employees</label>
-                            <input type="number" th:field="*{businessDetails.numberOfEmployees}"  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                            <input type="number" th:field="*{businessDetails.numberOfEmployees}" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
                         </div>
 
                         <div>
                             <label class="block text-sm font-medium text-gray-700">Annual revenue</label>
-                            <input type="number" th:field="*{businessDetails.annualRevenue}"  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                            <input type="number" th:field="*{businessDetails.annualRevenue}" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
                         </div>
 
                         <div>
                             <label class="block text-sm font-medium text-gray-700">Industry type</label>
-                            <select th:field="*{businessDetails.industryType}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm font-medium text-gray-700">
+                            <select th:field="*{businessDetails.industryType}" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm font-medium text-gray-700">
                                 <option value="CONSTRUCTION">Construction</option>
                                 <option value="TECHNOLOGY">Technology</option>
                                 <option value="RETAIL">Retail</option>
@@ -108,22 +108,22 @@
 
                         <div>
                             <label class="block text-sm font-medium text-gray-700">Years in business</label>
-                            <input type="number" th:field="*{businessDetails.yearsInBusiness}"  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                            <input type="number" th:field="*{businessDetails.yearsInBusiness}" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
                         </div>
 
 
                         <div>
                             <label class="block text-sm font-medium text-gray-700">Coverage amount</label>
-                            <input type="number" th:field="*{coverageAmount}" name="coverageAmount" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                            <input type="number" th:field="*{coverageAmount}" required name="coverageAmount" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
                         </div>
 
                         <div>
                             <label class="block text-sm font-medium text-gray-700">Start Date</label>
-                            <input type="date" th:field="*{startDate}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                            <input type="date" th:field="*{startDate}" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700">End Date</label>
-                            <input type="date" th:field="*{endDate}"  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                            <input type="date" th:field="*{endDate}" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
                         </div>
                     </div>
 
