@@ -2,7 +2,6 @@
 
 M2I Assurance is a full-stack web application for managing insurance clients, contracts, and categories. It provides a secure system for admins and clients to manage their data, view dashboards with basic statistics, and perform CRUD operations through a user-friendly interface.
 
-![M2I Assurance](https://via.placeholder.com/800x400.png?text=M2I+Assurance+Demo) <!-- Optional: Replace with actual screenshot -->
 
 ## Table of Contents
 - [Features](#features)
